@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="scripts/serveur.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <link rel="stylesheet" href="CSS/style.css">
     <title>SYNTHESE_ASYNCHRONE</title>
 </head>
@@ -15,40 +16,61 @@
 
     <section>
         <h2>VANNES</h2>
-        <form>
-            <label>
-              <input type="checkbox" name="parameter" value="temperature_2m"> Temperature (2 m)
+        <ul></ul>
+        <form id="weatherForm">
+          <h3>1</h3>
+          <label>
+            <input type="float" name="latitude" > 52.52
+          </label><br>
+          <label>
+            <input type="float" name="longitude" >13.41
+          </label><br>
+          <h3>2</h3>
+          <label>
+              <input type="checkbox" name="hourly" value="temperature_2m"> Temperature (2 m)
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="humidity_2m"> Relative Humidity (2 m)
+              <input type="checkbox" name="hourly" value="humidity_2m"> Relative Humidity (2 m)
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="dewpoint_2m"> Dewpoint (2 m)
+              <input type="checkbox" name="hourly" value="dewpoint_2m"> Dewpoint (2 m)
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="apparent_temperature"> Apparent Temperature
+              <input type="checkbox" name="hourly" value="apparent_temperature"> Apparent Temperature
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="precipitation_probability"> Precipitation Probability
+              <input type="checkbox" name="hourly" value="precipitation_probability"> Precipitation Probability
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="precipitation"> Precipitation (rain + showers + snow)
+              <input type="checkbox" name="hourly" value="precipitation"> Precipitation (rain + showers + snow)
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="rain"> Rain
+              <input type="checkbox" name="hourly" value="rain"> Rain
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="showers"> Showers
+              <input type="checkbox" name="hourly" value="showers"> Showers
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="snowfall"> Snowfall
+              <input type="checkbox" name="hourly" value="snowfall"> Snowfall
             </label><br>
             <label>
-              <input type="checkbox" name="parameter" value="snow_depth"> Snow Depth
+              <input type="checkbox" name="hourly" value="snow_depth"> Snow Depth
             </label><br>
+         
+            <label for="forecast-duration">Duration:</label>
+            <select id="forecast-duration" name="forecast_days">
+              <option value="1">1 day</option>
+              <option value="3">3 days</option>
+              <option value="7">7 days</option>
+              <option value="14">14 days</option>
+              <option value="16">16 days</option>
+            </select>
+            <br><br>
+            <button type="submit">Submit</button>
           </form>
-
-          <select name="" id=""></select>
+    </section>
+    <section>
+      <canvas id="weatherChart" width="800" height="400"></canvas>
     </section>
     
 </body>
