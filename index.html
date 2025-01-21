@@ -1,77 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="scripts/serveur.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <link rel="stylesheet" href="CSS/style.css">
-    <title>SYNTHESE_ASYNCHRONE</title>
-</head>
-<body>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="scripts/weather.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+  </script>
+  <link rel="stylesheet" href="CSS/style.css">
+  <title>SYNTHESE_ASYNCHRONE</title>
+</head>
+
+<body>
+  <header>
     <h1>Synthèse asynchrone</h1>
 
-    <h2>Evolution des temperature en france</h2>
+    <h2>Evolution des temperatures</h2>
+  </header>
 
-    <section>
-        <h2>VANNES</h2>
-        <ul></ul>
-        <form id="weatherForm">
-          <h3>1</h3>
-          <label>
-            <input type="float" name="latitude" > 52.52
-          </label><br>
-          <label>
-            <input type="float" name="longitude" >13.41
-          </label><br>
-          <h3>2</h3>
-          <label>
-              <input type="checkbox" name="hourly" value="temperature_2m"> Temperature (2 m)
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="humidity_2m"> Relative Humidity (2 m)
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="dewpoint_2m"> Dewpoint (2 m)
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="apparent_temperature"> Apparent Temperature
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="precipitation_probability"> Precipitation Probability
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="precipitation"> Precipitation (rain + showers + snow)
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="rain"> Rain
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="showers"> Showers
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="snowfall"> Snowfall
-            </label><br>
-            <label>
-              <input type="checkbox" name="hourly" value="snow_depth"> Snow Depth
-            </label><br>
-         
-            <label for="forecast-duration">Duration:</label>
-            <select id="forecast-duration" name="forecast_days">
-              <option value="1">1 day</option>
-              <option value="3">3 days</option>
-              <option value="7">7 days</option>
-              <option value="14">14 days</option>
-              <option value="16">16 days</option>
-            </select>
-            <br><br>
-            <button type="submit">Submit</button>
-          </form>
-    </section>
-    <section>
-      <canvas id="weatherChart" width="800" height="400"></canvas>
-    </section>
-    
+
+<main>
+
+  <h3>Entrer un nom de ville</h3>
+  <section id="flag">
+    <input type="text" id="country">
+    <select name="city" id="city">
+      <option value="">liste</option>
+      
+    </select>
+
+    <ul></ul>
+    <form id="weatherForm">
+      <h3>1-Position</h3>
+      <label>
+        Latitude: <input type="float" name="latitude" id="latitude">
+      </label><br>
+      <label>
+        Longitude: <input type="float" name="longitude" id="longitude">
+      </label><br>
+      <h3>2-Periode</h3>
+      
+
+      <label for="forecast-duration">Duration:</label>
+      <select id="forecast-duration" name="forecast_days">
+        <option value="1">1 day</option>
+        <option value="3">3 days</option>
+        <option value="7">7 days</option>
+        <option value="14">14 days</option>
+        <option value="16">16 days</option>
+      </select>
+      <br><br>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section>
+    <h2 id="localisation"></h2>
+    <canvas id="weatherChart" width="800" height="400"></canvas>
+  </section>
+
+</main>
+
+<footer>
+  <p>Réaliser par Yoann Laubert le 21/01/2025 - Greta Vannes - Kercode</p>
+</footer>
+  
+
 </body>
+
 </html>
