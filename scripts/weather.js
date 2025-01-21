@@ -12,36 +12,59 @@ var positionValue = ["","",""];
 function displayCountry(data) {
   console.log(data);
   let infoCountry = document.querySelector("#country").value;
-   
-  infoCountry === "" ? alert("Aucune ville trouver") :
-  data.results.forEach((element) => {
-    let elementSearch = document.createElement("option");
-    let dataName = element.name;
-    let dataLatitude = element.latitude;
-    let dataLongitude = element.longitude;
-    let dataCountryCode = element.country_code;
-
-    elementSearch.innerText = "";
-    positionValue[0] = dataLatitude;
-    positionValue[1] = dataLongitude;
-    positionValue[2] = dataCountryCode;
-    elementSearch.innerText = `${dataName}   ${dataLatitude}°N  ${dataLongitude}°E - Code pays: ${dataCountryCode} `;
-
-
-    elementSearch.setAttribute("class", "select");
-    elementSearch.setAttribute("value", positionValue);
-    searchCountry.appendChild(elementSearch);
     
-
+  if(infoCountry === ""){
+    alert("VEUILLEZ RENSEIGNER UNE VILLE");
+  }else if(searchCountry.childElementCount === 1){
+    console.log("else if")
+    data.results.forEach((element) => {
+      let elementSearch = document.createElement("option");
+      let dataName = element.name;
+      let dataLatitude = element.latitude;
+      let dataLongitude = element.longitude;
+      let dataCountryCode = element.country_code;
+  
+      positionValue[0] = dataLatitude;
+      positionValue[1] = dataLongitude;
+      positionValue[2] = dataCountryCode;
+      elementSearch.innerText = `${dataName}   ${dataLatitude}°N  ${dataLongitude}°E - Code pays: ${dataCountryCode} `;
+  
+  
+      elementSearch.setAttribute("class", "displayOption");
+      elementSearch.setAttribute("value", positionValue);
+      searchCountry.appendChild(elementSearch);
+    });
+  }else{
+    console.log("else")
+    while(searchCountry.childElementCount > 1){
+      searchCountry.removeChild(searchCountry.lastChild);
+    }
     
-    
-  });
-
+    data.results.forEach((element) => {
+      let elementSearch = document.createElement("option");
+      let dataName = element.name;
+      let dataLatitude = element.latitude;
+      let dataLongitude = element.longitude;
+      let dataCountryCode = element.country_code;
+  
+      positionValue[0] = dataLatitude;
+      positionValue[1] = dataLongitude;
+      positionValue[2] = dataCountryCode;
+      elementSearch.innerText = `${dataName}   ${dataLatitude}°N  ${dataLongitude}°E - Code pays: ${dataCountryCode} `;
+  
+  
+      elementSearch.setAttribute("class", "select");
+      elementSearch.setAttribute("value", positionValue);
+      searchCountry.appendChild(elementSearch);
+    });
+  }
+  
   
 }
 
 //RENVOI LES COORDONEES DE LA VILLE SELECTIONNE
-searchCountry.addEventListener("change", function () {
+searchCountry.addEventListener("change", function (e) {
+  e.preventDefault();
   console.log(this.value);
   let flagCountry = document.querySelector("#flag");
   let latitude = document.querySelector("#latitude");
@@ -53,47 +76,40 @@ searchCountry.addEventListener("change", function () {
   longitude.setAttribute("value", citySelected[1]);
   let codeCountry = citySelected[2].toLowerCase();
 
+  let attributes = {
+    'id' : "exist",
+    'src': `https://flagcdn.com/16x12/${codeCountry}.png`,
+    'srcset': `https://flagcdn.com/32x24/${codeCountry}.png 2x, https://flagcdn.com/48x36/${codeCountry}.png 3x`,
+    'width': '16',
+    'height': '12',
+    'alt': codeCountry
     
+  }; 
+
+    //VERIFIE SI L'IMAGE EXISTE - SI IMAGE = TRUE MODIFIE ATTRIBUT - SINON CREER L'IMAGE
   if(imageExist){
-    console.log("hey")
-    let attributes = {
-      'id' : "exist",
-      'src': `https://flagcdn.com/16x12/${codeCountry}.png`,
-      'srcset': `https://flagcdn.com/32x24/${codeCountry}.png 2x, https://flagcdn.com/48x36/${codeCountry}.png 3x`,
-      'width': '16',
-      'height': '12',
-      'alt': codeCountry
-      
+    for(var[key,value] of Object.entries(imageExist)){
+      imageExist.removeAttribute(key,value);
     };
     for(var[key,value] of Object.entries(attributes)){
-      imageFlag.setAttribute(key,value)
-    };
-    
+      imageExist.setAttribute(key,value);
+    };  
   }else{
     let imageFlag = document.createElement("img");
-    let attributes = {
-      'id' : "exist",
-      'src': `https://flagcdn.com/16x12/${codeCountry}.png`,
-      'srcset': `https://flagcdn.com/32x24/${codeCountry}.png 2x, https://flagcdn.com/48x36/${codeCountry}.png 3x`,
-      'width': '16',
-      'height': '12',
-      'alt': codeCountry
-      
-    };
+   
     for(var[key,value] of Object.entries(attributes)){
       imageFlag.setAttribute(key,value)
     };
 
     flagCountry.insertBefore(imageFlag, flagCountry.firstChild);
-
-
   }
   
     
   
 });
 
-//AFFICHE LES 10 VILLES CORRESPONDANT A REQUETE
+//RECUPERE ET AFFICHE LES 10 VILLES CORRESPONDANT A LA REQUETE
+//AVEC LA FONCTION DISPLAYCOUNTRY()
 city.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -134,7 +150,7 @@ form.addEventListener("submit", (e) => {
 
 });
 
-//RECUPERATION DES DONNEES DE L'API OPEN METEO
+//RECUPERATION POUR CHART.JS DES DONNEES PRECEDENTE, ET DESSINE LE GRAPHIQUE
 function getDataAndDraw(data) {
   let labels = data.hourly.time;
   console.log(labels);
@@ -142,12 +158,12 @@ function getDataAndDraw(data) {
   let dataSets = data.hourly.temperature_2m;
   console.log(dataSets);
 
-  //CONFIGURATION DU GRAPHIQUE
+  //VERIFICATION ET MIS A JOUR DU GRAPHIQUE
   if (weather_chart) {
     weather_chart.destroy();
   }
 
-  //GRAPHIQE
+  //CREATION DU GRAPHIQE
   weather_chart = new Chart(context, {
     type: "line",
     options: {
