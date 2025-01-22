@@ -1,0 +1,15 @@
+{
+  "name": "synthese_asynchrone",
+  "version": "1.0.0",
+  "description": "Créer une page web affichant et mettant en forme des données météorologiques",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch SASS/style.scss CSS/style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cesium": "^1.125.0",
+    "sass": "^1.83.4"
+  }
+}

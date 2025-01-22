@@ -1,0 +1,92 @@
+@import url(../node_modules/cesium/Build/Cesium/Widgets/widgets.css);
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+}
+header h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+header h2 {
+  font-size: 24px;
+}
+
+#flag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+}
+#flag h3 {
+  margin-bottom: 10px;
+}
+#flag .citySearch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+}
+#flag .citySearch .searchZone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+}
+#flag .citySearch #country {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  margin-right: 8px;
+}
+#flag .citySearch #buttonCesium {
+  width: 100px;
+  height: 30px;
+  background-color: #68D8F7;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+#flag .citySearch select {
+  min-width: 220px;
+  height: 30px;
+  margin-top: 16px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+#toolbar {
+  background: rgba(42, 42, 42, 0.8);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+#toolbar input {
+  vertical-align: middle;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+#cesiumContainer {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin-top: 40px;
+}
+
+/*# sourceMappingURL=style.css.map */

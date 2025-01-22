@@ -167,7 +167,15 @@ function getDataAndDraw(data) {
   weather_chart = new Chart(context, {
     type: "line",
     options: {
-      animation: false,
+      animation: {
+        tension: {
+          duration: 1000,
+          easing: 'linear',
+          from: 1,
+          to: 0,
+          loop: true
+        }
+      },
       plugins: {
         tooltip: {
           enabled: false,
@@ -191,6 +199,7 @@ function getDataAndDraw(data) {
           fill: false,
           lineTension: 0.5,
           data: dataSets,
+          borderColor: 'rgb(75, 192, 192)',
         },
       ],
     },
