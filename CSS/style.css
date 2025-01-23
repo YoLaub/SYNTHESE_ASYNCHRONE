@@ -5,6 +5,7 @@ header {
   justify-content: center;
   align-items: center;
   max-width: 1000px;
+  margin: auto;
 }
 header h1 {
   font-size: 40px;
@@ -20,6 +21,7 @@ header h2 {
   justify-content: center;
   align-items: center;
   max-width: 1000px;
+  margin: auto;
 }
 #flag h3 {
   margin-bottom: 10px;
@@ -30,34 +32,70 @@ header h2 {
   justify-content: center;
   align-items: center;
   max-width: 1000px;
+  margin: auto;
 }
 #flag .citySearch .searchZone {
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 1000px;
+  margin: auto;
+  margin-bottom: 16px;
 }
-#flag .citySearch #country {
+#flag .citySearch .searchZone i {
+  font-size: 24px;
+  margin-right: 8px;
+}
+#flag .citySearch .searchZone #country {
   width: 100px;
   height: 30px;
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   margin-right: 8px;
 }
-#flag .citySearch #buttonCesium {
+#flag .citySearch .searchZone #buttonCesium {
   width: 100px;
   height: 30px;
-  background-color: #68D8F7;
+  background-color: #68d8f7;
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 #flag .citySearch select {
-  min-width: 220px;
+  min-width: 240px;
   height: 30px;
-  margin-top: 16px;
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   text-align: center;
+}
+
+#weatherForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
+}
+#weatherForm .positionGeo {
+  display: flex;
+}
+#weatherForm .positionGeo #longitude {
+  margin: 0 16px 0 16px;
+}
+#weatherForm .soumettre {
+  width: 100px;
+  height: 30px;
+  background-color: #68d8f7;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#graphique {
+  max-width: 1000px;
+}
+
+#cesiumGraphique {
+  max-width: 1000px;
 }
 
 #toolbar {
@@ -86,6 +124,7 @@ footer {
   justify-content: center;
   align-items: center;
   max-width: 1000px;
+  margin: auto;
   margin-top: 40px;
 }
 

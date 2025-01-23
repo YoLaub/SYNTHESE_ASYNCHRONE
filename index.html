@@ -33,6 +33,7 @@
         <div class="searchZone">
           <i class="bi bi-geo-alt-fill"></i>
           <input type="text" id="country" placeholder="Search?">
+          <i class="bi bi-globe2"></i>
           <button type="button" id="buttonCesium">GLOBE</button>
         </div>
 
@@ -43,34 +44,39 @@
 
       <form id="weatherForm">
 
-        <h3>1-Position</h3>
-        <label>
-          Latitude: <input type="float" name="latitude" id="latitude">
-        </label><br>
-        <label>
-          Longitude: <input type="float" name="longitude" id="longitude">
-        </label><br>
+        <h3>Position</h3>
 
-        <h3>2-Periode</h3>
-        <label for="forecast-duration">Période mesurée: </label>
-        <select id="forecast-duration" name="forecast_days">
-          <option value="1">1 day</option>
-          <option value="3">3 days</option>
-          <option value="7">7 days</option>
-          <option value="14">14 days</option>
-          <option value="16">16 days</option>
-        </select>
+        <div class="positionGeo">
+          <label >
+            Latitude: <input type="float" name="latitude" id="latitude">
+          </label><br>
+          <label>
+            Longitude: <input type="float" name="longitude" id="longitude">
+          </label><br>
 
-        <button type="submit">Submit</button>
+          <label for="forecast_days">
+            Période évaluée
+          <select id="forecast-duration" name="forecast_days">
+            <option value="1">1 day</option>
+            <option value="3">3 days</option>
+            <option value="7">7 days</option>
+            <option value="14">14 days</option>
+            <option value="16">16 days</option>
+          </select>
+        </label>
+
+        </div>   
+
+        <button type="submit" class="soumettre">Submit</button>
       </form>
     </section>
 
-    <section>
+    <section id="graphique">
       <h2 id="localisation"></h2>
       <canvas id="weatherChart" width="800" height="400"></canvas>
     </section>
 
-    <section>
+    <section id="cesiumDisplay">
       <div id="cesiumContainer" class="fullSize"></div>
 
 
